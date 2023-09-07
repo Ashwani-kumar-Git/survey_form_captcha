@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+		
+      <form method="POST" name="submit-to-google-sheet" action="https://script.google.com/macros/s/AKfycbxZcLDhaHWdixiUJY01aKnzaEV5Ta1rcZLnJkd3MHB3Skf4Y3IxjGZHbW1MihDkgRD46w/exec">
+      <div class="form">
+        <div class="title-div">
+          <h1>STUDENT SURVEY</h1>
+          <p>Kindly Provide the details and help us to improve.</p>
+          <p class="required">*Required </p>
+        </div>
+    
+        <div class="name-div">
+          <div class="name">What is your name?<sup class="required">*</sup></div>
+          <div class="input-div"><input type="input" name="Name" placeholder="Your Name"></div>
+        </div>
+    
+        <div class="college-div">
+          <div class="name">Enter  your college name.</div>
+          <div class="input-div"><input type="input" name="College" placeholder="Your answer"></div>
+        </div>
+    
+        <div class="gmail-div">
+          <div class="name">Enter  your email.<sup class="required">*</sup></div>
+          <div class="input-div"><input type="input" name="Email" placeholder="Your email"></div>
+        </div>
+    
+        <div class="mobile-div">
+          <div class="name">Enter  your mobile no.</div>
+          <div class="input-div"><input type="input" name="Mobile" placeholder="Your answer"></div>
+        </div>
+    
+        
+          
+        <div class="Questions"><br>
+          <label>1. Are you enrolled in any company?
+          </label><br>
+          <span><br><input type="radio" id="Yes" name="Q1" value="yes" required>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Q1" value="no" required>
+          <label for="no">No</label></span>
+        
+        </div>
+        
+        <div class="Questions"><br>
+          <label>2. Have you attended any extracurricular activities organized by the college?</label><br>
+          <span><br><input type="radio" id="Yes" name="Q2" value="yes" required>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Q2" value="no" required>
+          <label for="no">No</label></span>
+        
+        </div>
+        
+        <div class="Questions"><br>
+          <label>3. Have you used online learning platform for your studies?</label><br>
+          <span><br><input type="radio" id="Yes" name="Q3" value="yes" required>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Q3" value="no" required>
+          <label for="no">No</label></span>
+        
+        </div>
+        
+        <div class="Questions"><br>
+          <label>4. Do you feel that the school provides sufficient support for academic challenges?
+          </label><br>
+          <span><br><input type="radio" id="Yes" name="Q4" value="yes" required>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Q4" value="no" required>
+          <label for="no">No</label></span>
+        
+        </div>
+        
+        <div class="Questions"><br>
+          <label>5. Are you satisfied with the communication between teachers and students?</label><br>
+          <span><br><input type="radio" id="Yes" name="Q5" value="yes" required>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Q5" value="no" required>
+          <label for="no">No</label></span>
+        
+        </div>
+    
+
+    <div class="container">
+      <div class="wrapper">
+        <canvas id="canvas" width="200" height="70"></canvas>
+        <button id="reload-button">
+          <i class="fa-solid fa-arrow-rotate-right"></i>
+        </button>
+      </div>
+      <input
+        type="text"
+        id="user-input"
+        placeholder="Enter Captch Here"
+      /><br>
+      <button id="submit-button" class="btn" onclick="Myfunction()" type="submit" name="Submit" value="submit" >Submit</button>
+    </div>
+  
+    <script src="script.js"></script>
+
+    <div class="success">
+    <div id="success" name="success">
+    </div>
+    </div>
+    
+    <div class="last-div">
+    <p class="never">Never submit passwords through Google Forms.</p>
+    <p class="term">Report Abuse - Term of Service - Private Policy</p>
+    <h2>CREATED BY ASHWANI KUMAR</h2>
+    </div>
+    </div>
+    
+    </form>
+    <script>
+    function Myfunction()
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxZcLDhaHWdixiUJY01aKnzaEV5Ta1rcZLnJkd3MHB3Skf4Y3IxjGZHbW1MihDkgRD46w/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const success= document.getElementById('submit-button');
+    
+    form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+    success.innerHTML="Submitted Successfully.";
+    })
+    .catch(error => console.error('Error!', error.message))
+    })
+    
+    </script>
+  </body>
+</html>
